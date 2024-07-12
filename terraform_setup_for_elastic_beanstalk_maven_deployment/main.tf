@@ -1,6 +1,6 @@
 # Creation of the backend resources from module
 module "backend" {
-  source     = "./terraform-backend"
+  source     = "./modules/terraform-backend"
   bucket_name = "your-terraform-state-bucket"
   table_name  = "terraform_locks"
 }
