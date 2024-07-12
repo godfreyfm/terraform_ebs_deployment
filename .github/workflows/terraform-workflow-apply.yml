@@ -25,18 +25,18 @@ jobs:
           terraform_version: "1.1.7"
 
       - name: Terraform Init
-        run: terraform init -input=false
         working-directory: ./terraform_setup_for_elastic_beanstalk_maven_deployment
+        run: terraform init -input=false
           
       - name: Terraform Validate
-        run: terraform validate
         working-directory: ./terraform_setup_for_elastic_beanstalk_maven_deployment
+        run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -input=false -out=tfplan
         working-directory: ./terraform_setup_for_elastic_beanstalk_maven_deployment
+        run: terraform plan -input=false -out=tfplan
           
       - name: Terraform Apply
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: terraform apply -input=false tfplan -auto-approve
         working-directory: ./terraform_setup_for_elastic_beanstalk_maven_deployment/
+        run: terraform apply -input=false tfplan -auto-approve
